@@ -1,0 +1,46 @@
+export const InitialValues = {
+  file_lambang_partai: null,
+  nama_partai: "",
+  singkatan_partai: "",
+  arti_nama_partai: "",
+  asas: "",
+  visi: "",
+  misi: "",
+  file_salinan_sah: null,
+  aggrement_lambang_partai: "",
+  aggrement_visi_partai: "",
+
+  data_notaris: [
+    {
+      nama_notaris: "",
+      kedudukan_notaris: "",
+      nomor_akta: "",
+      tanggal_akta: "",
+      prihal_akta: "",
+      file_akta: null,
+    },
+  ],
+
+  nomor_surat_pemohon: "",
+  tanggal_surat_pemohon: "",
+  file_pemohon: null,
+  nama_bank: "",
+  nomor_rekening: "",
+  file_buku_tabungan: null,
+  status_kantor: "",
+  file_status_kantor: null,
+
+  alamat_kantor_pusst: "",
+  provinsi_kantor_pusst: "",
+  kabkota_kantor_pusst: "",
+  kecamatan_kantor_pusst: "",
+  kelurahan_kantor_pusst: "",
+  rt_kantor_pusst: "",
+  rw_kantor_pusst: "",
+  kode_pos_kantor_pusst: "",
+  latitude: "",
+  longitude: "",
+
+  file_kantor_depan: null,
+  file_kantor_belakang: null,
+};

@@ -1,0 +1,27 @@
+export const InitialValues = {
+  nama_lengkap: "",
+  nik: "",
+  npwp: "",
+  jenis_kelamin: "",
+  kewarganegaraan: "",
+  tempat_lahir: "",
+  tanggal_lahir: "",
+  email: "",
+  nomor_telepon: "",
+  provinsi: "",
+  kabkota: "",
+  fotokopi_ktp: "",
+  pekerjaan: "",
+  jabatan: "",
+  fotokopi_npwp: "",
+  // ------ //////////// -------
+
+  alamat_lengkap: "",
+  provinsi_pemohon: "",
+  kabkota_pemohon: "",
+  kecamatan_pemohon: "",
+  kelurahan_pemohon: "",
+  rt: "",
+  rw: "",
+  kode_pos_pemohon: "",
+};
