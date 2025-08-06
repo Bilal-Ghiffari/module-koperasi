@@ -16,7 +16,7 @@ const Sidebar = (props) => {
         <div className="navbar-brand-box">
           <div
             className="w-100 d-flex justify-content-center align-items-center cursor-pointer"
-            onClick={() => (window.location.href = "http://localhost:8000")}
+            onClick={() => (window.location.href = "/")}
             style={{ height: "70px" }}
           >
             <img src={logoDarkCustom} alt="" height="44" width={110} />
