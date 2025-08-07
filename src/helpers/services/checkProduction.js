@@ -1,6 +1,7 @@
 import secureLocalStorage from "react-secure-storage";
 import { getUserDetail } from "./getStorage";
 import { AUTH_KEY } from "@/constants/api.constant";
+import { getLocalStorageItem } from "@/utils/storageBroworser";
 const def_status = import.meta.env.VITE_APP_PRODUCTION;
 
 // tujuannya supaya di production juga tetep bisa cek sebagai development
@@ -12,7 +13,8 @@ export const checkStatusProductionServ = () => {
 };
 
 export const getUser = () => {
-  return secureLocalStorage.getItem(AUTH_KEY) || {};
+  // return secureLocalStorage.getItem(AUTH_KEY) || {};
+  return getLocalStorageItem(AUTH_KEY) || {};
 };
 
 export const getFirstRole = () => {

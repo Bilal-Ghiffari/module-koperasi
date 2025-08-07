@@ -1,13 +1,44 @@
 import withRouter from "@/components/Common/withRouter";
+import { AUTH_KEY } from "@/constants/api.constant";
+import { Box, CircularProgress, Fade, Modal, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 import { withTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import secureLocalStorage from "react-secure-storage";
 
 const KoperasiMenuVertical = (props) => {
+  console.log("🚀 ~ KoperasiMenuVertical ~ props:", props);
   //   const PATH_PARENT = "/partai-politik";
   const { roles } = props;
-  console.log("🚀 ~ KoperasiMenuVertical ~ props:", roles?.module_code);
+  // console.log("🚀 ~ KoperasiMenuVertical ~ props:", roles?.module_code);
+  // const userDetail = secureLocalStorage.getItem(AUTH_KEY);
+  // if (!roles) {
+  //   return (
+  //     <Modal
+  //       open={!roles}
+  //       closeAfterTransition
+  //       slots={{ backdrop: Backdrop }}
+  //       slotProps={{
+  //         backdrop: {
+  //           timeout: 500,
+  //         },
+  //       }}
+  //     >
+  //       <Fade in={!roles}>
+  //         <Box sx={style}>
+  //           <CircularProgress size={60} />
+  //           <Typography variant="h6" component="h2" align="center">
+  //             Sedang memuat data...
+  //           </Typography>
+  //           <Typography variant="body2" align="center">
+  //             Harap tunggu sebentar
+  //           </Typography>
+  //         </Box>
+  //       </Fade>
+  //     </Modal>
+  //   );
+  // }
   const menuStructure = [
     {
       menu_code: "01",

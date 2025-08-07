@@ -22,11 +22,21 @@ import PerseroanTerbatas from "../Menu/Vertical/PerseroanTerbatas";
 import UserManagementMenuVertical from "../Menu/Vertical/UserManagement";
 import PartaiPolitikMenuVertical from "../Menu/Vertical/PartaiPolitikMenuVertical";
 import KoperasiMenuVertical from "../Menu/Vertical/koperasiMenuVertical";
+import useLoginData from "@/hooks/useLoginData";
+import {
+  Backdrop,
+  Box,
+  CircularProgress,
+  Fade,
+  Modal,
+  Typography,
+} from "@mui/material";
 
 const SidebarContent = (props) => {
   const ref = useRef();
   const path = useLocation();
-  const user = getUser();
+  // const user = getUser();
+  const { loginData: user, loading, error } = useLoginData();
 
   const activateParentDropdown = useCallback((item) => {
     if (!item) return; // pastikan item tidak null
@@ -159,6 +169,23 @@ const SidebarContent = (props) => {
     }
   }
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+    borderRadius: 2,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 2,
+  };
+
   const module_code = useMemo(() => {
     const { pathname } = path;
 
@@ -186,10 +213,33 @@ const SidebarContent = (props) => {
     }
   }, [path]);
 
-  const roles = user?.roles || [];
+  const roles = user?.user_detail?.roles || [];
+  console.log("roles", roles);
 
   return (
     <React.Fragment>
+      {/* <Modal
+        open={loading}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={loading}>
+          <Box sx={style}>
+            <CircularProgress size={60} />
+            <Typography variant="h6" component="h2" align="center">
+              Sedang memuat data...
+            </Typography>
+            <Typography variant="body2" align="center">
+              Harap tunggu sebentar
+            </Typography>
+          </Box>
+        </Fade>
+      </Modal> */}
       <SimpleBar className="h-100" ref={ref}>
         <div id="sidebar-menu">
           {/* <DynamicMenu roles={[]} /> */}

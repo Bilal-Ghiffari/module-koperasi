@@ -5,13 +5,15 @@ import Cookies from "js-cookie";
 import useLoginData from "@/hooks/useLoginData";
 import secureLocalStorage from "react-secure-storage";
 import { AUTH_KEY } from "@/constants/api.constant";
+import { setLocalStorageItem } from "@/utils/storageBroworser";
 
 const Authmiddleware = ({ children }) => {
   const { loginData, loading, error } = useLoginData();
   const location = import.meta.env.VITE_APP_PORTAL_HOST;
-  if (loginData) {
-    secureLocalStorage.setItem(AUTH_KEY, loginData?.user_detail);
-  }
+  // if (loginData) {
+  //   // secureLocalStorage.setItem(AUTH_KEY, loginData?.user_detail);
+  //   setLocalStorageItem(AUTH_KEY, loginData?.user_detail);
+  // }
   console.log("🚀 ~ Authmiddleware ~ loginData:", loginData);
   const token = Cookies.get("userSession");
   if (!token) {
