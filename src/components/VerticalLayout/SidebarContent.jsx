@@ -221,7 +221,29 @@ const SidebarContent = (props) => {
 
   return (
     <React.Fragment>
-      <AHULoading open={loading} message="Loading..." logoSrc={AHULogo} />
+      <Modal
+        open={true}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={true}>
+          <Box sx={style}>
+            <CircularProgress size={60} />
+            <Typography variant="h6" component="h2" align="center">
+              Sedang memuat data...
+            </Typography>
+            <Typography variant="body2" align="center">
+              Harap tunggu sebentar
+            </Typography>
+          </Box>
+        </Fade>
+      </Modal>
+      <AHULoading />
       <SimpleBar className="h-100" ref={ref}>
         <div id="sidebar-menu">
           {/* <DynamicMenu roles={[]} /> */}
