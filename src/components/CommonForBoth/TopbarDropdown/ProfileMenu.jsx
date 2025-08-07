@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
+import styled from "styled-components";
 //i18n
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from "react-i18next";
 
 // Redux
-import { connect } from 'react-redux';
-import {  useNavigate } from 'react-router-dom';
-import withRouter from '../../Common/withRouter';
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import withRouter from "../../Common/withRouter";
 
 // users
-import { changeLayout } from '@/store/actions';
-import { layoutTypes } from '@/constants/layout';
-import { useDispatch } from 'react-redux';
-import { Box, IconButton } from '@mui/material';
+import { changeLayout } from "@/store/actions";
+import { layoutTypes } from "@/constants/layout";
+import { useDispatch } from "react-redux";
+import { Box, IconButton } from "@mui/material";
 
-import userImg from '../../../assets/icons/Layanan/user.png'
+import userImg from "../../../assets/icons/Layanan/user.png";
+import useLoginData from "@/hooks/useLoginData";
 
 const StyledDropdownItem = styled.div`
   display: flex;
@@ -58,43 +64,58 @@ const ProfileMenu = (props) => {
   const [menu, setMenu] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { loginData, loading, error } = useLoginData();
+  const username = loginData?.user_detail;
 
-  const [username, setusername] = useState('');
+  // const [username, setusername] = useState('');
 
-  useEffect(() => {
-    if (localStorage.getItem('resUser')) {
-      if (import.meta.env.VITE_APP_DEFAULTAUTH === 'firebase') {
-        const obj = JSON.parse(localStorage.getItem('resUser'));
-        setusername(obj.email);
-      } else if (import.meta.env.VITE_APP_DEFAULTAUTH === 'fake' || import.meta.env.VITE_APP_DEFAULTAUTH === 'jwt') {
-        const obj = JSON.parse(localStorage.getItem('resUser'));
-        setusername(obj.user_detail);
-      }
-    }
-  }, [props.success]);
-  
+  // useEffect(() => {
+  //   if (localStorage.getItem('resUser')) {
+  //     if (import.meta.env.VITE_APP_DEFAULTAUTH === 'firebase') {
+  //       const obj = JSON.parse(localStorage.getItem('resUser'));
+  //       setusername(obj.email);
+  //     } else if (import.meta.env.VITE_APP_DEFAULTAUTH === 'fake' || import.meta.env.VITE_APP_DEFAULTAUTH === 'jwt') {
+  //       const obj = JSON.parse(localStorage.getItem('resUser'));
+  //       setusername(obj.user_detail);
+  //     }
+  //   }
+  // }, [props.success]);
+
   return (
     <React.Fragment>
-      <Dropdown isOpen={menu} toggle={() => setMenu(!menu)} className="d-inline-block">
-        <DropdownToggle className="btn header-item no-arrow" id="page-header-user-dropdown" tag="button">
+      <Dropdown
+        isOpen={menu}
+        toggle={() => setMenu(!menu)}
+        className="d-inline-block"
+      >
+        <DropdownToggle
+          className="btn header-item no-arrow"
+          id="page-header-user-dropdown"
+          tag="button"
+        >
           <div className="d-flex align-items-center">
             <Box
               sx={{
                 width: 39,
                 height: 39,
-                bgcolor: '#D1D1D1', 
-                borderRadius: '50%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
+                bgcolor: "#D1D1D1",
+                borderRadius: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <img src={userImg} alt="user-image" />
             </Box>
             <div className="ps-1 ps-md-2">
-              <p className="text-capitalize m-0 p-0 fw-semibold text-start" style={{ lineHeight: '1.2' }}>
+              <p
+                className="text-capitalize m-0 p-0 fw-semibold text-start"
+                style={{ lineHeight: "1.2" }}
+              >
                 {username?.fullname} <br />
-                <span className="fw-normal font-size-11">{username?.roles?.[0]?.role || ' - '}</span>
+                <span className="fw-normal font-size-11">
+                  {username?.roles?.[0]?.role || " - "}
+                </span>
               </p>
             </div>
           </div>
@@ -122,9 +143,12 @@ const ProfileMenu = (props) => {
                 </div>
               </StyledUserDropdownItem> */}
 
-              <StyledDropdownItem onClick={() => navigate(`/auth-profile/${username.id}`)}>
+              <StyledDropdownItem
+                // onClick={() => navigate(`/auth-profile/${username.id}`)}
+                onClick={() => navigate(`/`)}
+              >
                 <i className="bx bx-user" />
-                {props.t('Profile')}
+                {props.t("Profile")}
               </StyledDropdownItem>
 
               <StyledDivider />
@@ -132,21 +156,21 @@ const ProfileMenu = (props) => {
               <StyledDropdownItem
                 onClick={() => {
                   // dispatch(changeLayout(layoutTypes.VERTICAL));
-                  // navigate('/')
+                  // navigate("/");
                 }}
               >
                 <i className="bx bx-wallet" />
-                {props.t('My Wallet')}
+                {props.t("My Wallet")}
               </StyledDropdownItem>
               <StyledDivider />
               <StyledDropdownItem
                 onClick={() => {
                   dispatch(changeLayout(layoutTypes.VERTICAL));
-                  navigate('/');
+                  navigate("/");
                 }}
               >
                 <i className="bx bxs-dashboard" />
-                {props.t('Menu Utama')}
+                {props.t("Menu Utama")}
               </StyledDropdownItem>
 
               <StyledDivider />
@@ -158,15 +182,18 @@ const ProfileMenu = (props) => {
 
               <StyledDivider /> */}
 
-              <StyledDropdownItem onClick={() => navigate('/logout')} className="text-danger">
+              <StyledDropdownItem
+                onClick={() => navigate("/logout")}
+                className="text-danger"
+              >
                 <i className="bx bx-power-off text-danger" />
-                <span className="text-danger">{props.t('Logout')}</span>
+                <span className="text-danger">{props.t("Logout")}</span>
               </StyledDropdownItem>
             </React.Fragment>
           ) : (
-            <StyledDropdownItem onClick={() => navigate('/login')}>
+            <StyledDropdownItem onClick={() => navigate("/login")}>
               <i className="bx bx-lock-open-alt" />
-              {props.t('Login')}
+              {props.t("Login")}
             </StyledDropdownItem>
           )}
         </DropdownMenuStyled>
@@ -177,7 +204,7 @@ const ProfileMenu = (props) => {
 
 ProfileMenu.propTypes = {
   success: PropTypes.any,
-  t: PropTypes.any
+  t: PropTypes.any,
 };
 
 export default withRouter(connect()(withTranslation()(ProfileMenu)));

@@ -8,15 +8,18 @@ import { withTranslation } from "react-i18next";
 import SidebarContent from "./SidebarContent";
 import logoDarkCustom from "../../assets/logo/LOGO AHU 1.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = (props) => {
+  const navigate = useNavigate();
   return (
     <React.Fragment>
       <div className="vertical-menu">
         <div className="navbar-brand-box">
           <div
             className="w-100 d-flex justify-content-center align-items-center cursor-pointer"
-            onClick={() => (window.location.href = "/")}
+            // onClick={() => (window.location.href = "/")}
+            onClick={() => navigate("/")}
             style={{ height: "70px" }}
           >
             <img src={logoDarkCustom} alt="" height="44" width={110} />

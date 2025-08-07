@@ -218,7 +218,7 @@ const SidebarContent = (props) => {
 
   return (
     <React.Fragment>
-      {/* <Modal
+      <Modal
         open={loading}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
@@ -239,7 +239,7 @@ const SidebarContent = (props) => {
             </Typography>
           </Box>
         </Fade>
-      </Modal> */}
+      </Modal>
       <SimpleBar className="h-100" ref={ref}>
         <div id="sidebar-menu">
           {/* <DynamicMenu roles={[]} /> */}
