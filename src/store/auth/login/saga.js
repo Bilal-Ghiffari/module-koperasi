@@ -26,20 +26,21 @@ function* loginUser({ payload: { user, history } }) {
 }
 
 function* logoutUser({ payload: { history } }) {
-  const location = import.meta.env.VITE_APP_PORTAL_HOST;
+  // const location = import.meta.env.VITE_APP_PORTAL_HOST;
   try {
-    localStorage.removeItem("resUser");
+    // localStorage.removeItem("resUser");
 
     if (import.meta.env.VITE_APP_DEFAULTAUTH === "jwt") {
       const response = yield call(postJwtLogout);
       yield put(logoutUserSuccess(response));
     }
-    // history('/login');
+
+    history("/login");
     // window.location.href = "http://localhost:8000";
-    window.location.href = location;
+    // window.location.href = location;
   } catch (error) {
-    // history('/login');
-    window.location.href = location;
+    history("/login");
+    // window.location.href = location;
     // yield put(apiError(error));
   }
 }
