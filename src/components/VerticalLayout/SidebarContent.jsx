@@ -36,6 +36,7 @@ const SidebarContent = (props) => {
   const ref = useRef();
   const path = useLocation();
   // const user = getUser();
+  // console.log("🚀 ~ SidebarContent ~ user:", user);
   const { loginData: user, loading, error } = useLoginData();
 
   const activateParentDropdown = useCallback((item) => {
@@ -190,7 +191,7 @@ const SidebarContent = (props) => {
     const { pathname } = path;
 
     switch (true) {
-      case pathname.startsWith("/ahu-koperasi"):
+      case pathname.startsWith("/koperasi"):
         return "25";
       case pathname.startsWith("/pewarganegaraan"):
         return "19";
@@ -213,6 +214,7 @@ const SidebarContent = (props) => {
     }
   }, [path]);
 
+  // const roles = user?.roles || [];
   const roles = user?.user_detail?.roles || [];
   console.log("roles", roles);
 

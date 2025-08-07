@@ -29,7 +29,7 @@ export const removeLocalStorageItem = (key) => {
 // cookie
 export const getCookie = (name) => {
   try {
-    return JSON.parse(Cookie.get(name));
+    return Cookie.get(name);
   } catch (error) {
     console.error("Cookie access error:", error);
     return null;

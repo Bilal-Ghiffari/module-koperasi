@@ -16,7 +16,7 @@ const KoperasiMenuVertical = (props) => {
       level: 1,
       permission: 1,
       children: [],
-      url: "/ahu-koperasi/dashboard",
+      url: "/koperasi",
     },
     {
       menu_code: "02",

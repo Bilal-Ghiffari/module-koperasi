@@ -7,15 +7,21 @@ import { logoutUser } from "../../store/actions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastifyService } from "@/components/Toastify/toastifyService";
+import { removeCookie, removeLocalStorageItem } from "@/utils/storageBroworser";
+import { useLocation } from "react-router-dom";
 
-const toastifyService = new ToastifyService()
+const toastifyService = new ToastifyService();
 const Logout = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    toastifyService.customShowLoading({title: 'Harap Tunggu',msg:'Proses Logout...'});
+    toastifyService.customShowLoading({
+      title: "Harap Tunggu",
+      msg: "Proses Logout...",
+    });
     dispatch(logoutUser(history));
+    removeCookie("userSession");
 
     setTimeout(() => {
       history("/login");

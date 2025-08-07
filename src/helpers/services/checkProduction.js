@@ -13,8 +13,8 @@ export const checkStatusProductionServ = () => {
 };
 
 export const getUser = () => {
-  // return secureLocalStorage.getItem(AUTH_KEY) || {};
-  return getLocalStorageItem(AUTH_KEY) || {};
+  return secureLocalStorage.getItem(AUTH_KEY) || {};
+  // return getLocalStorageItem(AUTH_KEY) || {};
 };
 
 export const getFirstRole = () => {

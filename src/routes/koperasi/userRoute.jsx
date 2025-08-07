@@ -11,7 +11,7 @@ const PageHomeDashboard = lazy(() =>
 
 const userRoutes = [
   {
-    path: "/ahu-koperasi/dashboard",
+    path: "/koperasi",
     component: (
       <SuspenseWrapper>
         <PageHomeDashboard />
