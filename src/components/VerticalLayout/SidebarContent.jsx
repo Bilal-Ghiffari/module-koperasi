@@ -31,6 +31,7 @@ import {
   Modal,
   Typography,
 } from "@mui/material";
+import AHULoading from "../Common/LoadingAHU";
 
 const SidebarContent = (props) => {
   const ref = useRef();
@@ -220,28 +221,7 @@ const SidebarContent = (props) => {
 
   return (
     <React.Fragment>
-      <Modal
-        open={loading}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            timeout: 500,
-          },
-        }}
-      >
-        <Fade in={loading}>
-          <Box sx={style}>
-            <CircularProgress size={60} />
-            <Typography variant="h6" component="h2" align="center">
-              Sedang memuat data...
-            </Typography>
-            <Typography variant="body2" align="center">
-              Harap tunggu sebentar
-            </Typography>
-          </Box>
-        </Fade>
-      </Modal>
+      <AHULoading open={loading} message="Loading..." logoSrc={AHULogo} />
       <SimpleBar className="h-100" ref={ref}>
         <div id="sidebar-menu">
           {/* <DynamicMenu roles={[]} /> */}
